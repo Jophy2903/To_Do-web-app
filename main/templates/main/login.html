@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+
+{% block base %}
+
+    <style>
+        .login-box {
+            max-width: 600px;
+            min-height: 600px;
+        }
+        .hide{
+            display:none;
+        }
+    </style>
+
+
+        <div class="container login-box d-flex justify-content-center align-items-center">
+
+            <div class="card bg-light-subtle">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="text-center">
+                            <button class="btn btn-sm btn-outline-primary" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <p>Don't have an account? <a class="btn btn-sm btn-success" href="{% url 'register' %}">Register</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+           $("div.card-body").find("label").addClass("form-label");
+           $("div.card-body").find("input").addClass("form-control");
+        });
+    </script>
+
+{% endblock base %}
+
+
+

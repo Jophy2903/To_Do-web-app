@@ -1,0 +1,21 @@
+{% extends 'main/home.html' %}
+
+{% block home %}
+
+    <div class="card">
+
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <p>Are you sure you want to delete this contact ? "{{ contact.contact_user }}"</p>
+                <button class="btn btn-outline-danger" type="submit">Delete</button>
+                <a class="btn btn-outline-primary" href="{% url 'contacts' %}">
+                Back
+            </a>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock home %}
+

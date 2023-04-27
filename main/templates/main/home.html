@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+
+{% block base %}
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'tasks' %}">To Do App</a>
+            <div class="text-light text-center">Welcome <i>{{ request.user | title }}</i></div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar"
+                    aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                 aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ToDo App</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" id="tasks-menu-item" aria-current="page"
+                               href="{% url 'tasks' %}">Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="groups-menu-item" href="{% url 'groups' %}">Task Groups</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contacts-menu-item" href="{% url 'contacts' %}">Contacts</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                {{ request.user | title }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-3">
+        <div class="col-12">
+
+            {% block home %}
+            {% endblock home %}
+
+        </div>
+
+    </div>
+
+{% endblock base %}
